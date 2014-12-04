@@ -1,0 +1,48 @@
+<div class="page-header">
+  <h1>Categories</h1>
+</div>
+
+
+<p><a href="/categories/new" class="btn btn-primary">Add a New Category</a></p>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+
+      <th>Category</th>
+
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+
+        <td><%= category.category %></td>
+
+
+        <td>
+          <a href="/categories/<%= category.id %>" class="btn btn-primary">
+            <i class="fa fa-search-plus"></i>
+          </a>
+        </td>
+        <td>
+          <a href="/categories/<%= category.id %>/edit" class="btn btn-warning">
+            <i class="fa fa-edit"></i>
+          </a>
+        </td>
+        <td>
+          <a href="/delete_category/<%= category.id %>" class="btn btn-danger">
+            <i class="fa fa-trash-o"></i>
+          </a>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
