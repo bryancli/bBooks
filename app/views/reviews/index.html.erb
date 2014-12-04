@@ -12,11 +12,11 @@
 
       <th>Book</th>
 
-      <th>User</th>
+      <th>Reviewer</th>
 
       <th>Summary</th>
 
-      <th>Fullreview</th>
+<!--       <th>Fullreview</th>
 
       <th>Startdate</th>
 
@@ -24,9 +24,9 @@
 
       <th>Enlightenmentrating</th>
 
-      <th>Enjoymentrating</th>
+      <th>Enjoymentrating</th> -->
 
-      <th>Overallrating</th>
+      <th>Overall Rating</th>
 
       <th></th>
       <th></th>
@@ -38,13 +38,13 @@
     <% @reviews.each do |review| %>
       <tr>
 
-        <td><%= review.book_id %></td>
+        <td><%= review.book.title %></td>
 
-        <td><%= review.user_id %></td>
+        <td><%= review.user.username %></td>
 
         <td><%= review.summary %></td>
 
-        <td><%= review.fullReview %></td>
+<!--         <td><%= review.fullReview %></td>
 
         <td><%= review.startDate %></td>
 
@@ -52,7 +52,7 @@
 
         <td><%= review.enlightenmentRating %></td>
 
-        <td><%= review.enjoymentRating %></td>
+        <td><%= review.enjoymentRating %></td> -->
 
         <td><%= review.overallRating %></td>
 
@@ -67,11 +67,14 @@
             <i class="fa fa-edit"></i>
           </a>
         </td>
+
+        <% if current_user == review.user %>
         <td>
           <a href="/delete_review/<%= review.id %>" class="btn btn-danger">
             <i class="fa fa-trash-o"></i>
           </a>
         </td>
+        <% end %>
 
       </tr>
     <% end %>

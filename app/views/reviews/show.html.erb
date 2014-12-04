@@ -1,19 +1,19 @@
 <div class="page-header">
-  <h1>Review #<%= @review.id %></h1>
+  <h1><%= @review.summary %></h1>
 </div>
 
 <dl class="dl-horizontal">
 
   <dt>Book</dt>
-  <dd><%= @review.book_id %></dd>
+  <dd><%= @review.book.title %> by <%= @review.book.author.fullName %></dd>
 
 
   <dt>User</dt>
-  <dd><%= @review.user_id %></dd>
+  <dd><%= @review.user.username %></dd>
 
 
-  <dt>Summary</dt>
-  <dd><%= @review.summary %></dd>
+<!--   <dt>Summary</dt>
+  <dd><%= @review.summary %></dd> -->
 
 
   <dt>Fullreview</dt>
