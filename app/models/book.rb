@@ -1,9 +1,5 @@
-class Author < ActiveRecord::Base
-	has_many :books
-
-	validates :firstName, :presence => true
-	validates :lastName, :presence => true
-
-	def fullName; "#{firstName} #{lastName}";end
+class Book < ActiveRecord::Base
+	belongs_to :author
+	belongs_to :category
 
 end

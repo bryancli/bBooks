@@ -14,9 +14,9 @@
 
       <th>Title</th>
 
-      <th>Year</th>
-
       <th>Category</th>
+
+      <th>Year</th>
 
       <th>Picture</th>
 
@@ -30,15 +30,15 @@
     <% @books.each do |book| %>
       <tr>
 
-        <td><%= book.author_id %></td>
+        <td><%= book.author.fullName %></td>
 
         <td><%= book.title %></td>
 
+        <td><%= book.category.category %></td>
+
         <td><%= book.year %></td>
 
-        <td><%= book.category_id %></td>
-
-        <td><%= book.picture %></td>
+        <td><img src="<%= book.picture %>" alt="<%= book.title %>" style="80:px;height:120px"></td>
 
 
         <td>
@@ -51,11 +51,14 @@
             <i class="fa fa-edit"></i>
           </a>
         </td>
+
+        <% if current_user.username == 'admin' %>
         <td>
           <a href="/delete_book/<%= book.id %>" class="btn btn-danger">
             <i class="fa fa-trash-o"></i>
           </a>
         </td>
+        <% end %>
 
       </tr>
     <% end %>

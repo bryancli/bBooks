@@ -10,11 +10,11 @@
   <thead>
     <tr>
 
-      <th>Firstname</th>
+      <th>First Name</th>
 
-      <th>Lastname</th>
+      <th>Last Name</th>
 
-      <th>Shortbio</th>
+      <th>Short Bio</th>
 
       <th></th>
       <th></th>
@@ -38,17 +38,27 @@
             <i class="fa fa-search-plus"></i>
           </a>
         </td>
-        <td>
-          <a href="/authors/<%= author.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
-        </td>
-        <td>
-          <a href="/delete_author/<%= author.id %>" class="btn btn-danger">
-            <i class="fa fa-trash-o"></i>
-          </a>
-        </td>
 
+        <% if current_user.present? %>
+          <% if current_user.username == 'admin' %>
+          <td>
+            <a href="/authors/<%= author.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+          </td>
+          <% end %>
+        <% end %>
+
+        <% if current_user.present? %>
+          <% if current_user.username == 'admin' %>
+          <td>
+            <a href="/delete_author/<%= author.id %>" class="btn btn-danger">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </td>
+          <% end %>
+        <% end %>
+        
       </tr>
     <% end %>
   </tbody>
