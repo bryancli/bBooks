@@ -62,18 +62,31 @@
             <i class="fa fa-search-plus"></i>
           </a>
         </td>
-        <td>
-          <a href="/reviews/<%= review.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
-        </td>
 
-        <% if current_user == review.user %>
-        <td>
-          <a href="/delete_review/<%= review.id %>" class="btn btn-danger">
-            <i class="fa fa-trash-o"></i>
-          </a>
-        </td>
+        <% if current_user.present? %>
+          <% if (current_user == review.user || current_user.username == 'admin') %>
+          <td>
+            <a href="/reviews/<%= review.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+          </td>
+          <% else %>
+          <td>
+          </td>
+          <% end %>
+        <% end %>
+
+        <% if current_user.present? %>
+          <% if (current_user == review.user || current_user.username == 'admin') %>
+          <td>
+            <a href="/delete_review/<%= review.id %>" class="btn btn-danger">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </td>
+          <% else %>
+          <td>
+          </td>
+          <% end %>
         <% end %>
 
       </tr>

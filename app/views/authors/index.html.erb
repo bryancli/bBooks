@@ -40,21 +40,27 @@
         </td>
 
         <% if current_user.present? %>
-          <% if current_user.username == 'admin' %>
+          <% if (current_user.username == 'admin') %>
           <td>
             <a href="/authors/<%= author.id %>/edit" class="btn btn-warning">
               <i class="fa fa-edit"></i>
             </a>
           </td>
+          <% else %>
+          <td>
+          </td>
           <% end %>
         <% end %>
 
         <% if current_user.present? %>
-          <% if current_user.username == 'admin' %>
+          <% if (current_user.username == 'admin') %>
           <td>
             <a href="/delete_author/<%= author.id %>" class="btn btn-danger">
               <i class="fa fa-trash-o"></i>
             </a>
+          </td>
+          <% else %>
+          <td>
           </td>
           <% end %>
         <% end %>
