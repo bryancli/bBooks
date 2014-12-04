@@ -23,13 +23,25 @@
   <dt>Picture</dt>
   <dd><img src="<%= @book.picture %>" alt="<%= @book.title %>" style="120:px;height:180px"></dd>
 
-  <dt>Reviews</dt>
+  <dt>Current Reviews</dt>
   <dd>
-    <ul>
     <% @book.reviews.each do |review| %>
-      <li><a href="/reviews/<%= review.id %>"><%= review.user.username %>'s Review</a></li>
+      <%= review.overallRating %>/5<a href="/reviews/<%= review.id %>"> <%= review.summary %></a> by <%= review.user.username %>
+    </br> 
     <% end %>
-    </ul>
+    
+    <p><a href="/review/new" class="btn btn-primary">Add a New Review</a></p>
+  </dd>
+
+  <dt>Similar Books</dt>
+  <dd>
+    <% @book.category.books.each do |book| %>
+      <% if @book.id != book.id %>
+      <a href="/book/<%= book.id %>"> <%= book.title %></a>
+      </br>
+      <% end %>
+    <% end %>
+
   </dd>
 
 

@@ -16,28 +16,40 @@
   <dd><%= @review.summary %></dd> -->
 
 
-  <dt>Fullreview</dt>
+  <dt>Full Review</dt>
   <dd><%= @review.fullReview %></dd>
 
 
-  <dt>Startdate</dt>
+  <dt>Start Date</dt>
   <dd><%= @review.startDate %></dd>
 
 
-  <dt>Enddate</dt>
+  <dt>End Date</dt>
   <dd><%= @review.endDate %></dd>
 
 
-  <dt>Enlightenmentrating</dt>
-  <dd><%= @review.enlightenmentRating %></dd>
+  <dt>Enlightenment Rating</dt>
+  <dd><%= @review.enlightenmentRating %>/5</dd>
 
 
-  <dt>Enjoymentrating</dt>
-  <dd><%= @review.enjoymentRating %></dd>
+  <dt>Enjoyment Rating</dt>
+  <dd><%= @review.enjoymentRating %>/5</dd>
 
 
-  <dt>Overallrating</dt>
-  <dd><%= @review.overallRating %></dd>
+  <dt>Overall Rating</dt>
+  <dd><%= @review.overallRating %>/5</dd>
+
+  <dt>Other Related Reviews</dt>
+  <dd>
+    <% @review.book.reviews.each do |review| %>
+      <% if @review.id != review.id %>
+      Review by <%= review.user.username %>: <%= review.overallRating %>/5<a href="/reviews/<%= review.id %>"> <%= review.summary %></a>
+      </br>
+      <% end %>
+    <% end %>
+    
+    <p><a href="/review/new" class="btn btn-primary">Add a New Review</a></p>
+  </dd>
 
 
 </dl>
